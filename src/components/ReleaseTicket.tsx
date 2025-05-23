@@ -1,15 +1,12 @@
 "use client";
 
-import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
+import { api } from "@/../convex/_generated/api";
+import { Id } from "@/../convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import { useState } from "react";
 import { XCircle } from "lucide-react";
 
-export default function ReleaseTicket({
-    eventId,
-    waitingListId,
-}) {
+export default function ReleaseTicket({ eventId, waitingListId, }: { eventId: Id<"events">; waitingListId: Id<"waitingList">; }) {
     const [isReleasing, setIsReleasing] = useState(false);
     const releaseTicket = useMutation(api.waitingList.releaseTicket);
 
