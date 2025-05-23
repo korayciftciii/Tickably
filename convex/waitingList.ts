@@ -181,56 +181,56 @@ export const expireOffer = internalMutation({
  * Groups expired offers by event for efficient processing and updates queue
  * for each affected event after cleanup.
  */
-export const cleanupExpiredOffers = internalMutation({
-    args: {},
-    handler: async (ctx) => {
-        const now = Date.now();
-        // Find all expired but not yet cleaned up offers
-        const expiredOffers = await ctx.db
-            .query("waitingList")
-            .filter((q) =>
-                q.and(
-                    q.eq(q.field("status"), WAITING_LIST_STATUS.OFFERED),
-                    q.lt(q.field("offerExpiresAt"), now)
-                )
-            )
-            .collect();
+// export const cleanupExpiredOffers = internalMutation({
+//     args: {},
+//     handler: async (ctx) => {
+//         const now = Date.now();
+//         // Find all expired but not yet cleaned up offers
+//         const expiredOffers = await ctx.db
+//             .query("waitingList")
+//             .filter((q) =>
+//                 q.and(
+//                     q.eq(q.field("status"), WAITING_LIST_STATUS.OFFERED),
+//                     q.lt(q.field("offerExpiresAt"), now)
+//                 )
+//             )
+//             .collect();
 
-        // Group by event for batch processing
-        const grouped = groupByEvent(expiredOffers);
+//         // Group by event for batch processing
+//         const grouped = groupByEvent(expiredOffers);
 
-        // Process each event's expired offers and update queue
-        for (const [eventId, offers] of Object.entries(grouped)) {
-            await Promise.all(
-                offers.map((offer) =>
-                    ctx.db.patch(offer._id, {
-                        status: WAITING_LIST_STATUS.EXPIRED,
-                    })
-                )
-            );
+//         // Process each event's expired offers and update queue
+//         for (const [eventId, offers] of Object.entries(grouped)) {
+//             await Promise.all(
+//                 offers.map((offer) =>
+//                     ctx.db.patch(offer._id, {
+//                         status: WAITING_LIST_STATUS.EXPIRED,
+//                     })
+//                 )
+//             );
 
-            await processQueue(ctx, { eventId: eventId as Id<"events"> });
-        }
-    },
-});
+//             await processQueue(ctx, { eventId: eventId as Id<"events"> });
+//         }
+//     },
+// });
 
-export const releaseTicket = mutation({
-    args: {
-        eventId: v.id("events"),
-        waitingListId: v.id("waitingList"),
-    },
-    handler: async (ctx, { eventId, waitingListId }) => {
-        const entry = await ctx.db.get(waitingListId);
-        if (!entry || entry.status !== WAITING_LIST_STATUS.OFFERED) {
-            throw new Error("No valid ticket offer found");
-        }
+// export const releaseTicket = mutation({
+//     args: {
+//         eventId: v.id("events"),
+//         waitingListId: v.id("waitingList"),
+//     },
+//     handler: async (ctx, { eventId, waitingListId }) => {
+//         const entry = await ctx.db.get(waitingListId);
+//         if (!entry || entry.status !== WAITING_LIST_STATUS.OFFERED) {
+//             throw new Error("No valid ticket offer found");
+//         }
 
-        // Mark the entry as expired
-        await ctx.db.patch(waitingListId, {
-            status: WAITING_LIST_STATUS.EXPIRED,
-        });
+//         // Mark the entry as expired
+//         await ctx.db.patch(waitingListId, {
+//             status: WAITING_LIST_STATUS.EXPIRED,
+//         });
 
-        // Process queue to offer ticket to next person
-        await processQueue(ctx, { eventId });
-    },
-});
+//         // Process queue to offer ticket to next person
+//         await processQueue(ctx, { eventId });
+//     },
+// });
