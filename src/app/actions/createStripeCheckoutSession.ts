@@ -66,7 +66,7 @@ export async function createStripeCheckoutSession({
             line_items: [
                 {
                     price_data: {
-                        currency: "gbp",
+                        currency: "usd",
                         product_data: {
                             name: event.name,
                             description: event.description,
@@ -77,7 +77,7 @@ export async function createStripeCheckoutSession({
                 },
             ],
             payment_intent_data: {
-                application_fee_amount: Math.round(event.price * 100 * 0.01),
+                application_fee_amount: Math.round(event.price * 100 * 0.05),
             },
             expires_at: Math.floor(Date.now() / 1000) + DURATIONS.TICKET_OFFER / 1000, // 30 minutes (stripe checkout minimum expiration time)
             mode: "payment",
