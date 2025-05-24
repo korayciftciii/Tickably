@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
       {
         hostname: "fiery-fly-12.convex.cloud",
         protocol: "https",
+      },
+      {
+        hostname: "compassionate-meadowlark-153.convex.cloud",
+        protocol: "https",
       }
     ]
 
