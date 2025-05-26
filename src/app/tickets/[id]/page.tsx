@@ -92,7 +92,7 @@ export default function TicketPage() {
                             </div>
                             {ticket.event.is_cancelled && (
                                 <p className="mt-4 text-sm text-red-400">
-                                    This event has been cancelled. A refund will be processed if it hasn't been already.
+                                    This event has been cancelled. A refund will be processed if it hasn&apos;t been already.
                                 </p>
                             )}
                         </div>

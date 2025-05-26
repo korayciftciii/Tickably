@@ -60,7 +60,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
                     <div className="flex items-center">
                         <CircleArrowRight className="w-5 h-5 text-yellow-400 mr-2" />
                         <span className="text-yellow-300 font-medium">
-                            You're next in line! (Queue position: {queuePosition.position})
+                            You&apos;re next in line! (Queue position: {queuePosition.position})
                         </span>
                     </div>
                     <div className="flex items-center">
