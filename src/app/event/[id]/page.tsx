@@ -12,7 +12,11 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 import { useStorageUrl } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Event Details | Tickably™",
+    description: "View event details and purchase tickets",
+};
 export default function EventPage() {
     const { user } = useUser();
     const params = useParams();

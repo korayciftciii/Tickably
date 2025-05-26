@@ -9,7 +9,11 @@ import Ticket from "@/components/Ticket";
 import Link from "next/link";
 import { ArrowLeft, Download, Share2 } from "lucide-react";
 import { useEffect } from "react";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Ticket Details | Tickably™",
+    description: "View your ticket details and manage your bookings",
+};
 export default function TicketPage() {
     const params = useParams();
     const { user } = useUser();

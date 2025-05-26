@@ -3,7 +3,11 @@ import { redirect } from "next/navigation";
 import SellerEventList from "@/components/SellerEventList";
 import Link from "next/link";
 import { ArrowLeft, Plus } from "lucide-react";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "My Events | Tickably™",
+    description: "Manage your event listings and track sales",
+};
 export default async function SellerEventsPage() {
     const { userId } = await auth();
     if (!userId) redirect("/");

@@ -1,8 +1,12 @@
 "use client";
 
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
-
+export const metadata: Metadata = {
+    title: "Return Ticket | Tickably™",
+    description: "A modern ticketing platform for events",
+};
 export default function Return() {
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">

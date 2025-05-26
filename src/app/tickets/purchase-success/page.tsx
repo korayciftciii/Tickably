@@ -3,7 +3,11 @@ import { api } from "@/../convex/_generated/api";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Ticket from "@/components/Ticket";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Ticket Purchase Success | Tickably™",
+    description: "Your ticket purchase was successful! View your ticket details.",
+};
 async function TicketSuccess() {
     const { userId } = await auth();
     if (!userId) redirect("/");

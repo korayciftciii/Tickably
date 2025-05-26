@@ -1,5 +1,9 @@
 import EventForm from "@/components/EventForm";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Create New Event | Tickably™",
+    description: "List your event and start selling tickets",
+};
 export default function NewEventPage() {
     return (
         <div className="max-w-3xl mx-auto p-6">

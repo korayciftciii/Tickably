@@ -6,7 +6,11 @@ import { useQuery } from "convex/react";
 import { Id } from "@/../convex/_generated/dataModel";
 import EventForm from "@/components/EventForm";
 import { AlertCircle } from "lucide-react";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Edit Event | Tickably™",
+    description: "Update your event details",
+};
 export default function EditEventPage() {
     const params = useParams();
     const event = useQuery(api.events.getById, {

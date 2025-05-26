@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { createStripeConnectAccountLink } from "@/app/actions/createStripeConnectAccountLink";
 import { Loader2, AlertCircle } from "lucide-react";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Refresh Account | Tickably™",
+    description: "A modern ticketing platform for events",
+};
 export default function Refresh() {
     const params = useParams();
     const connectedAccountId = params.id as string;

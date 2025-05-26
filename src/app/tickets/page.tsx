@@ -5,7 +5,11 @@ import { useQuery } from "convex/react";
 import { useUser } from "@clerk/nextjs";
 import TicketCard from "@/components/TicketCard";
 import { Ticket } from "lucide-react";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "My Tickets | Tickably™",
+    description: "Manage and view all your tickets in one place",
+};
 export default function MyTicketsPage() {
     const { user } = useUser();
     const tickets = useQuery(api.events.getUserTickets, {
