@@ -6,8 +6,9 @@ import SearchBar from "./SearchBar";
 
 function Header() {
     return (
-        <div className="border-b">
+        <div className="border-b border-gray-800 bg-gray-900 shadow-sm">
             <div className="flex flex-col lg:flex-row items-center gap-4 p-4">
+                {/* Logo and mobile sign in */}
                 <div className="flex items-center justify-between w-full lg:w-auto">
                     <Link href="/" className="font-bold shrink-0">
                         <Image
@@ -21,11 +22,11 @@ function Header() {
 
                     <div className="lg:hidden">
                         <SignedIn>
-                            <UserButton />
+                            <UserButton afterSignOutUrl="/" />
                         </SignedIn>
                         <SignedOut>
                             <SignInButton mode="modal">
-                                <button className="bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                                <button className="bg-gray-800 text-gray-200 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-700 transition border border-gray-700">
                                     Sign In
                                 </button>
                             </SignInButton>
@@ -33,11 +34,12 @@ function Header() {
                     </div>
                 </div>
 
-                {/* Search Bar - Full width on mobile */}
+                {/* Search Bar */}
                 <div className="w-full lg:max-w-2xl">
                     <SearchBar />
                 </div>
 
+                {/* Desktop actions */}
                 <div className="hidden lg:block ml-auto">
                     <SignedIn>
                         <div className="flex items-center gap-3">
@@ -48,7 +50,7 @@ function Header() {
                             </Link>
 
                             <Link href="/tickets">
-                                <button className="bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                                <button className="bg-gray-800 text-gray-200 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-700 transition border border-gray-700">
                                     My Tickets
                                 </button>
                             </Link>
@@ -58,14 +60,14 @@ function Header() {
 
                     <SignedOut>
                         <SignInButton mode="modal">
-                            <button className="bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                            <button className="bg-gray-800 text-gray-200 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-700 transition border border-gray-700">
                                 Sign In
                             </button>
                         </SignInButton>
                     </SignedOut>
                 </div>
 
-                {/* Mobile Action Buttons */}
+                {/* Mobile actions */}
                 <div className="lg:hidden w-full flex justify-center gap-3">
                     <SignedIn>
                         <Link href="/seller" className="flex-1">
@@ -75,7 +77,7 @@ function Header() {
                         </Link>
 
                         <Link href="/tickets" className="flex-1">
-                            <button className="w-full bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                            <button className="w-full bg-gray-800 text-gray-200 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-700 transition border border-gray-700">
                                 My Tickets
                             </button>
                         </Link>

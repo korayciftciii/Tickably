@@ -35,12 +35,9 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
     });
     const imageUrl = useStorageUrl(event?.imageStorageId);
 
-    if (!event || !availability) {
-        return null;
-    }
+    if (!event || !availability) return null;
 
     const isPastEvent = event.eventDate < Date.now();
-
     const isEventOwner = user?.id === event?.userId;
 
     const renderQueuePosition = () => {
@@ -48,10 +45,10 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
         if (availability.purchasedCount >= availability.totalTickets) {
             return (
-                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg border border-gray-700">
                     <div className="flex items-center">
                         <Ticket className="w-5 h-5 text-gray-400 mr-2" />
-                        <span className="text-gray-600">Event is sold out</span>
+                        <span className="text-gray-300">Event is sold out</span>
                     </div>
                 </div>
             );
@@ -59,29 +56,28 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
         if (queuePosition.position === 2) {
             return (
-                <div className="flex flex-col lg:flex-row items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-100">
+                <div className="flex flex-col lg:flex-row items-center justify-between p-3 bg-yellow-900 rounded-lg border border-yellow-800">
                     <div className="flex items-center">
-                        <CircleArrowRight className="w-5 h-5 text-amber-500 mr-2" />
-                        <span className="text-amber-700 font-medium">
-                            You&apos;re next in line! (Queue position:{" "}
-                            {queuePosition.position})
+                        <CircleArrowRight className="w-5 h-5 text-yellow-400 mr-2" />
+                        <span className="text-yellow-300 font-medium">
+                            You're next in line! (Queue position: {queuePosition.position})
                         </span>
                     </div>
                     <div className="flex items-center">
-                        <LoaderCircle className="w-4 h-4 mr-1 animate-spin text-amber-500" />
-                        <span className="text-amber-600 text-sm">Waiting for ticket</span>
+                        <LoaderCircle className="w-4 h-4 mr-1 animate-spin text-yellow-400" />
+                        <span className="text-yellow-300 text-sm">Waiting for ticket</span>
                     </div>
                 </div>
             );
         }
 
         return (
-            <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
+            <div className="flex items-center justify-between p-3 bg-blue-900 rounded-lg border border-blue-800">
                 <div className="flex items-center">
-                    <LoaderCircle className="w-4 h-4 mr-2 animate-spin text-blue-500" />
-                    <span className="text-blue-700">Queue position</span>
+                    <LoaderCircle className="w-4 h-4 mr-2 animate-spin text-blue-400" />
+                    <span className="text-blue-300">Queue position</span>
                 </div>
-                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">
+                <span className="bg-blue-800 text-blue-200 px-3 py-1 rounded-full font-medium">
                     #{queuePosition.position}
                 </span>
             </div>
@@ -99,7 +95,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
                             e.stopPropagation();
                             router.push(`/seller/events/${eventId}/edit`);
                         }}
-                        className="w-full bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-sm flex items-center justify-center gap-2"
+                        className="w-full bg-gray-800 text-gray-200 px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors duration-200 shadow-sm flex items-center justify-center gap-2"
                     >
                         <PencilIcon className="w-5 h-5" />
                         Edit Event
@@ -110,12 +106,10 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
         if (userTicket) {
             return (
-                <div className="mt-4 flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
+                <div className="mt-4 flex items-center justify-between p-3 bg-green-900 rounded-lg border border-green-800">
                     <div className="flex items-center">
-                        <Check className="w-5 h-5 text-green-600 mr-2" />
-                        <span className="text-green-700 font-medium">
-                            You have a ticket!
-                        </span>
+                        <Check className="w-5 h-5 text-green-400 mr-2" />
+                        <span className="text-green-300 font-medium">You have a ticket!</span>
                     </div>
                     <button
                         onClick={() => router.push(`/tickets/${userTicket._id}`)}
@@ -130,13 +124,11 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
         if (queuePosition) {
             return (
                 <div className="mt-4">
-                    {queuePosition.status === "offered" && (
-                        <PurchaseTicket eventId={eventId} />
-                    )}
+                    {queuePosition.status === "offered" && <PurchaseTicket eventId={eventId} />}
                     {renderQueuePosition()}
                     {queuePosition.status === "expired" && (
-                        <div className="p-3 bg-red-50 rounded-lg border border-red-100">
-                            <span className="text-red-700 font-medium flex items-center">
+                        <div className="p-3 bg-red-900 rounded-lg border border-red-800">
+                            <span className="text-red-300 font-medium flex items-center">
                                 <XCircle className="w-5 h-5 mr-2" />
                                 Offer expired
                             </span>
@@ -152,10 +144,8 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
     return (
         <div
             onClick={() => router.push(`/event/${eventId}`)}
-            className={`bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 cursor-pointer overflow-hidden relative ${isPastEvent ? "opacity-75 hover:opacity-100" : ""
-                }`}
+            className={`bg-gray-900 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-700 cursor-pointer overflow-hidden relative ${isPastEvent ? "opacity-75 hover:opacity-100" : ""}`}
         >
-            {/* Event Image */}
             {imageUrl && (
                 <div className="relative w-full h-48">
                     <Image
@@ -179,27 +169,21 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
                                     Your Event
                                 </span>
                             )}
-                            <h2 className="text-2xl font-bold text-gray-900">{event.name}</h2>
+                            <h2 className="text-2xl font-bold text-white">{event.name}</h2>
                         </div>
                         {isPastEvent && (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mt-2">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 mt-2">
                                 Past Event
                             </span>
                         )}
                     </div>
 
-                    {/* Price Tag */}
                     <div className="flex flex-col items-end gap-2 ml-4">
-                        <span
-                            className={`px-4 py-1.5 font-semibold rounded-full ${isPastEvent
-                                ? "bg-gray-50 text-gray-500"
-                                : "bg-green-50 text-green-700"
-                                }`}
-                        >
+                        <span className={`px-4 py-1.5 font-semibold rounded-full ${isPastEvent ? "bg-gray-800 text-gray-400" : "bg-green-900 text-green-300"}`}>
                             ${event.price.toFixed(2)}
                         </span>
                         {availability.purchasedCount >= availability.totalTickets && (
-                            <span className="px-4 py-1.5 bg-red-50 text-red-700 font-semibold rounded-full text-sm">
+                            <span className="px-4 py-1.5 bg-red-900 text-red-300 font-semibold rounded-full text-sm">
                                 Sold Out
                             </span>
                         )}
@@ -207,38 +191,30 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
                 </div>
 
                 <div className="mt-4 space-y-3">
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-gray-300">
                         <MapPin className="w-4 h-4 mr-2" />
                         <span>{event.location}</span>
                     </div>
-
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-gray-300">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         <span>
-                            {new Date(event.eventDate).toLocaleDateString()}{" "}
-                            {isPastEvent && "(Ended)"}
+                            {new Date(event.eventDate).toLocaleDateString()} {isPastEvent && "(Ended)"}
                         </span>
                     </div>
-
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-gray-300">
                         <Ticket className="w-4 h-4 mr-2" />
                         <span>
-                            {availability.totalTickets - availability.purchasedCount} /{" "}
-                            {availability.totalTickets} available
+                            {availability.totalTickets - availability.purchasedCount} / {availability.totalTickets} available
                             {!isPastEvent && availability.activeOffers > 0 && (
-                                <span className="text-amber-600 text-sm ml-2">
-                                    ({availability.activeOffers}{" "}
-                                    {availability.activeOffers === 1 ? "person" : "people"} trying
-                                    to buy)
+                                <span className="text-yellow-400 text-sm ml-2">
+                                    ({availability.activeOffers} {availability.activeOffers === 1 ? "person" : "people"} trying to buy)
                                 </span>
                             )}
                         </span>
                     </div>
                 </div>
 
-                <p className="mt-4 text-gray-600 text-sm line-clamp-2">
-                    {event.description}
-                </p>
+                <p className="mt-4 text-gray-400 text-sm line-clamp-2">{event.description}</p>
 
                 <div onClick={(e) => e.stopPropagation()}>
                     {!isPastEvent && renderTicketStatus()}

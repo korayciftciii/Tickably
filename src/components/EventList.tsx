@@ -27,9 +27,9 @@ export default function EventList() {
                         Discover & book tickets for amazing events
                     </p>
                 </div>
-                <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <div className="flex items-center gap-2 text-gray-600">
-                        <CalendarDays className="w-5 h-5" />
+                <div className="bg-gray-800 px-4 py-2 rounded-lg shadow-sm border border-gray-700">
+                    <div className="flex items-center gap-2 text-gray-200">
+                        <CalendarDays className="w-5 h-5 text-gray-400" />
                         <span className="font-medium">
                             {upcomingEvents.length} Upcoming Events
                         </span>

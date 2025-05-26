@@ -40,9 +40,9 @@ export default function EventPage() {
                 <meta name="description" content="View event details and purchase tickets" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen ">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div className="bg-gray-800 rounded-xl shadow-sm overflow-hidden">
                         {imageUrl && (
                             <div className="aspect-[21/9] relative w-full">
                                 <Image
@@ -60,57 +60,50 @@ export default function EventPage() {
                                 {/* Left Column - Event Details */}
                                 <div className="space-y-8">
                                     <div>
-                                        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                                            {event.name}
-                                        </h1>
-                                        <p className="text-lg text-gray-600">{event.description}</p>
+                                        <h1 className="text-4xl font-bold text-white mb-4">{event.name}</h1>
+                                        <p className="text-lg text-gray-300">{event.description}</p>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-6">
-                                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                            <div className="flex items-center text-gray-600 mb-1">
-                                                <CalendarDays className="w-5 h-5 mr-2 text-blue-600" />
+                                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">
+                                            <div className="flex items-center text-gray-400 mb-1">
+                                                <CalendarDays className="w-5 h-5 mr-2 text-blue-400" />
                                                 <span className="text-sm font-medium">Date</span>
                                             </div>
-                                            <p className="text-gray-900">
-                                                {new Date(event.eventDate).toLocaleDateString()}
-                                            </p>
+                                            <p className="text-white">{new Date(event.eventDate).toLocaleDateString()}</p>
                                         </div>
 
-                                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                            <div className="flex items-center text-gray-600 mb-1">
-                                                <MapPin className="w-5 h-5 mr-2 text-blue-600" />
+                                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">
+                                            <div className="flex items-center text-gray-400 mb-1">
+                                                <MapPin className="w-5 h-5 mr-2 text-blue-400" />
                                                 <span className="text-sm font-medium">Location</span>
                                             </div>
-                                            <p className="text-gray-900">{event.location}</p>
+                                            <p className="text-white">{event.location}</p>
                                         </div>
 
-                                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                            <div className="flex items-center text-gray-600 mb-1">
-                                                <Ticket className="w-5 h-5 mr-2 text-blue-600" />
+                                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">
+                                            <div className="flex items-center text-gray-400 mb-1">
+                                                <Ticket className="w-5 h-5 mr-2 text-blue-400" />
                                                 <span className="text-sm font-medium">Price</span>
                                             </div>
-                                            <p className="text-gray-900">${event.price.toFixed(2)}</p>
+                                            <p className="text-white">${event.price.toFixed(2)}</p>
                                         </div>
 
-                                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                            <div className="flex items-center text-gray-600 mb-1">
-                                                <Users className="w-5 h-5 mr-2 text-blue-600" />
+                                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">
+                                            <div className="flex items-center text-gray-400 mb-1">
+                                                <Users className="w-5 h-5 mr-2 text-blue-400" />
                                                 <span className="text-sm font-medium">Availability</span>
                                             </div>
-                                            <p className="text-gray-900">
-                                                {availability.totalTickets - availability.purchasedCount}{" "}
-                                                / {availability.totalTickets} left
+                                            <p className="text-white">
+                                                {availability.totalTickets - availability.purchasedCount} / {availability.totalTickets} left
                                             </p>
                                         </div>
                                     </div>
 
                                     {/* Additional Event Information */}
-                                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-6">
-                                        <h3 className="text-lg font-semibold text-blue-900 mb-2">
-                                            Event Information
-                                        </h3>
-                                        <ul className="space-y-2 text-blue-700">
+                                    <div className="bg-blue-950 border border-blue-800 rounded-lg p-6">
+                                        <h3 className="text-lg font-semibold text-blue-300 mb-2">Event Information</h3>
+                                        <ul className="space-y-2 text-blue-400">
                                             <li>• Please arrive 30 minutes before the event starts</li>
                                             <li>• Tickets are non-refundable</li>
                                             <li>• Age restriction: 18+</li>
@@ -124,10 +117,7 @@ export default function EventPage() {
                                         <EventCard eventId={params.id as Id<"events">} />
 
                                         {user ? (
-                                            <JoinQueue
-                                                eventId={params.id as Id<"events">}
-                                                userId={user.id}
-                                            />
+                                            <JoinQueue eventId={params.id as Id<"events">} userId={user.id} />
                                         ) : (
                                             <SignInButton>
                                                 <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
@@ -142,6 +132,7 @@ export default function EventPage() {
                     </div>
                 </div>
             </div>
+
         </>
     );
 }
