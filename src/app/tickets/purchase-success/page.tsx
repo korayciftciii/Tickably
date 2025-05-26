@@ -7,6 +7,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Ticket Purchase Success | Tickably™",
     description: "Your ticket purchase was successful! View your ticket details.",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 async function TicketSuccess() {
     const { userId } = await auth();

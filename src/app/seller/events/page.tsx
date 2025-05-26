@@ -7,6 +7,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "My Events | Tickably™",
     description: "Manage your event listings and track sales",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default async function SellerEventsPage() {
     const { userId } = await auth();

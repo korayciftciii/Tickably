@@ -9,6 +9,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "My Tickets | Tickably™",
     description: "Manage and view all your tickets in one place",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function MyTicketsPage() {
     const { user } = useUser();

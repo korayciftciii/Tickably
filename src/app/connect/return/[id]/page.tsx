@@ -6,6 +6,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Return Ticket | Tickably™",
     description: "A modern ticketing platform for events",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function Return() {
     return (

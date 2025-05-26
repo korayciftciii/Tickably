@@ -13,6 +13,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Ticket Details | Tickably™",
     description: "View your ticket details and manage your bookings",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function TicketPage() {
     const params = useParams();

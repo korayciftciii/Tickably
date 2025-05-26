@@ -10,6 +10,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Edit Event | Tickably™",
     description: "Update your event details",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function EditEventPage() {
     const params = useParams();

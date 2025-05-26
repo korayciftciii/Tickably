@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 export const metadata: Metadata = {
     title: "Seller Dashboard | Tickably™",
     description: "Manage your events and tickets",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default async function SellerPage() {
     const { userId } = await auth();

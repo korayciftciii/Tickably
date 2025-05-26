@@ -8,6 +8,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Refresh Account | Tickably™",
     description: "A modern ticketing platform for events",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function Refresh() {
     const params = useParams();

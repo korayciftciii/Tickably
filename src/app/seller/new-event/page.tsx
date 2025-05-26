@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Create New Event | Tickably™",
     description: "List your event and start selling tickets",
+    icons: {
+        icon: '/favicon.png', // /public path
+    },
 };
 export default function NewEventPage() {
     return (
