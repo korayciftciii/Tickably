@@ -1,4 +1,4 @@
-# Ticketr Build
+# Ticakbly
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -43,12 +43,19 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 ## .env secret variables
 
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+
 CLERK_SECRET_KEY=
+
 CONVEX_DEPLOYMENT=
+
 NEXT_PUBLIC_CONVEX_URL=
+
 CONVEX_DEPLOY_KEY=
+
 VERCEL_PROJECT_PRODUCTION_URL=
+
 STRIPE_WEBHOOK_SECRET=
+
 STRIPE_SECRET_KEY=
 
 
@@ -107,10 +114,14 @@ npm install -D tw-animate-css
 
 ## Learn More
 
-[Next.js Documentation ](https://nextjs.org/docs)
-[Learn Next.js](https://nextjs.org) 
-[Convex Docunentation](https://docs.convex.dev/home) 
-[Clerk Docunentation](https://clerk.com/docs) 
-[Stripe Docunentation](https://docs.stripe.com/) 
+🔗 [Next.js Documentation ](https://nextjs.org/docs)
+
+🔗 [Learn Next.js](https://nextjs.org) 
+
+🔗 [Convex Docunentation](https://docs.convex.dev/home) 
+
+🔗 [Clerk Docunentation](https://clerk.com/docs) 
+
+🔗 [Stripe Docunentation](https://docs.stripe.com/) 
 
 
